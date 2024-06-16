@@ -38,6 +38,10 @@ text-align: right;
   color: rgb(210, 219, 232);
   border: none;
   outline: 1px solid black;
-
-
+}
+button:hover
+{
+  background-color: #caaa48;
+  color: rgb(210, 219, 232);
+  cursor: pointer;
 }
