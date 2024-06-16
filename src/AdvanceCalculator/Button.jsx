@@ -18,6 +18,8 @@ function Button({ calculate }) {
                         <button
                             key={item}
                             onClick={() => calculate(item)}
+                            
+                            // This part is done to provide differnet styles to different buttons
                             style={{
                                 width: item === '0' ? '118px' : undefined,
                                 backgroundColor: isArithmetic(item) ? 'rgb(255, 153, 0)' : isNumber(item) ? '#4b4b4b' : undefined,

@@ -5,11 +5,19 @@ import Input from './AdvanceCalculator/Input';
 import ConfettiExplosion from 'react-confetti-explosion';
 
 function App() {
+  // This useState is for the input value and calculations
   const [inputValue, setInputValue] = useState('');
+
+  // This useState is for the memory(M+,M-, MR,MC)
   const [memory, setMemory] = useState(0);
+
+  // This is for the confetti explosion
   const [showConfetti, setShowConfetti] = useState(false);
+
+  // This useState is for the theme change
   const [theme, setTheme] = useState('#202020');
 
+  // This array is for the explosion for operands containing 4 and 3
   const explosion =['3+4','3-4','3*4','3/4','3%4','4+3','4-3','4*3','4/3','4%3']
   const calculateFun = (item) => {
     switch (item) {
@@ -347,7 +355,9 @@ function App() {
            color = {theme}/>
            
           <Button calculate={calculateFun} />
-          {showConfetti && <ConfettiExplosion />}
+
+          {/* Confetti Explosion  */}
+          {showConfetti && <ConfettiExplosion />}  
 
         </div>
       </center>
