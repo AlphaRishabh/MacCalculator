@@ -1,0 +1,43 @@
+.container
+{
+  width: 595px;
+  height: 287px;
+  border-style: groove;
+  border-width: 1px;
+  border-radius: 10px;
+  
+}
+input
+{
+width: 90%;
+height: 6vh;
+margin: 10px;
+margin-Right: -18px;
+font-size: 30px;
+border: none;
+color: rgb(210, 219, 232);
+text-align: right;
+
+}
+
+.btn{
+  display: flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  border-radius: 5px;
+ 
+ 
+}
+.btn button
+{
+  width: 59px;
+  height: 5vh;
+  margin: 0px;
+  font-size:17px;
+  background-color:#303031;
+  color: rgb(210, 219, 232);
+  border: none;
+  outline: 1px solid black;
+
+
+}
