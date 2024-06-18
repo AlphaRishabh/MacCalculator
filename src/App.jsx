@@ -72,11 +72,12 @@ function App() {
 
       case 'sinh':
         handleTrigFunction('sinh');
-        break;;
         break;
+
       case 'cosh':
         handleTrigFunction('cosh');
         break;
+
       case 'tanh':
         handleTrigFunction('tanh');
         break;
@@ -115,14 +116,16 @@ function App() {
       
       case 'MC':
           setMemory(0);
-          
           break;
+
       case 'M+':
           handleMemoryAdd();
           break;
+
       case 'M-':
           handleMemorySubtract();
           break;
+
       case 'MR':
           handleMemoryRecall();
           break;
@@ -148,7 +151,7 @@ function App() {
         return;
       }
       const result = eval(inputValue);
-      setInputValue(result.toString());
+      setInputValue(result);
   
       // Check if inputValue matches any element in explosion array
       if (explosion.includes(inputValue)) {
@@ -163,7 +166,6 @@ function App() {
   };
 //Function For Finding 
   const handleFactorial = () => {
-    try {
       const value = eval(inputValue);
       if (value < 0) {
         setInputValue('Error');
@@ -174,119 +176,116 @@ function App() {
         result *= i;
       }
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+    } 
+    
 // Function For Trigonometric Function
   const handleTrigFunction = (func) => {
-    try {
+  
       const radians = eval(inputValue);
       const result = Math[func](radians);
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+    } 
+
 // Function For Converting Radians
   const convertToRadians = () => {
-    try {
+
       const degrees = eval(inputValue);
+
+      if (isNaN(degrees)) {
+        alert('Error');
+        return;
+      }
       const radians = (degrees * Math.PI) / 180;
       setInputValue(radians.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+    } 
+
 // Function For Power
   const handlePower = (power) => {
-    try {
+    
       const value = eval(inputValue);
       const result = Math.pow(value, power);
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
     }
-  };
-
+    
   // Function For Exponential
   const handleExponential = () => {
-    try {
+   
       const value = eval(inputValue);
       const result = Math.exp(value);
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+   
+  }
 
   // Function For Reciprocal
   const handleReciprocal = () => {
-    try {
+  
       const value = eval(inputValue);
       const result = 1 / value;
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+    } 
 
   // Function For Ten Power
   const handleTenPower = () => {
-    try {
+  
       const value = eval(inputValue);
       const result = Math.pow(10, value);
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+  }
 
 // Function For Square Root
   const handleSquareRoot = (root) => {
-    try {
+   
       const value = eval(inputValue);
       const result = Math.pow(value, 1 / root);
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
+    
   };
 
   
 // Function For Plus Minus
   const handlePlusMinus = () => {
-    try {
+  
       const value = eval(inputValue);
       const result = -value;
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+    } 
 
   // Function For Percentage
-  const handlePercentage = () => {
-    try {
-      const trimmedInput = inputValue.trim();
-      const parts = trimmedInput.split(/[+\-]/);
-      const lastPart = parts[parts.length - 1];
-      const percentIndex = lastPart.lastIndexOf('%');
+  // const handlePercentage = () => {
+     
+  //     const trimmedInput = inputValue.trim();
+  //     const parts = trimmedInput.split(/[+\-]/);
+  //     const lastPart = parts[parts.length - 1];
+  //     const percentIndex = lastPart.lastIndexOf('%');
   
-      if (percentIndex !== -1) {
-        const num1 = parseFloat(lastPart.substring(0, percentIndex));
-          const num2 = parseFloat(lastPart.substring(percentIndex + 1));
-        const result = (num1 / 100) * num2;
-        const updatedInput = trimmedInput.substring(0, trimmedInput.length - lastPart.length) + result.toString(); 
-        setInputValue(updatedInput);
-      } else {
-        calculateResult();
-      }
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+  //     if (percentIndex !== -1) {
+  //       const num1 = parseFloat(lastPart.substring(0, percentIndex));
+  //         const num2 = parseFloat(lastPart.substring(percentIndex + 1));
+  //       const result = (num1 / 100) * num2;
+  //       const updatedInput = trimmedInput.substring(0, trimmedInput.length - lastPart.length) + result.toString(); 
+  //       setInputValue(updatedInput);
+  //     } else {
+  //       calculateResult();
+  //     }
+  //   } 
 
+  const handlePercentage = () => {
+  
+      const value = inputValue.split('%');
+  
+      // Initialize the result
+      let result = 0;
+  
+        const num1 = parseFloat(value[0]);
+        const num2 = parseFloat(value[1]);
+
+        result = eval(num1/100)*num2;
+  
+      // Update the input value with the result
+      setInputValue(result);
+    } 
+
+  
   // Function For Inserting Pi
   const insertPi = () => {
     setInputValue(Math.PI);
@@ -298,50 +297,35 @@ function App() {
   };
 
   const handleScientificFunction = () => {
-    try {
       const value = eval(inputValue);
       const result = value.toExponential();
       setInputValue(result);
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
-
+    } 
   // Function For Logarithm
   const handleLog = (type) => {
-    try {
       const value = eval(inputValue);
       const result = type === 'ln' ? Math.log(value) : Math.log10(value);
       setInputValue(result.toString());
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+    } 
 
 // Function For Memory Add
   const handleMemoryAdd = () => {
-    try {
+   
       const value = eval(inputValue);
       setMemory((prev) => prev + value);
       setInputValue('');
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+    } 
 // Function For Memory Subtract
   const handleMemorySubtract = () => {
-    try {
+    
       const value = eval(inputValue);
       setMemory((prev) => prev - value);
       setInputValue('');
-    } catch (error) {
-      setInputValue('Error');
-    }
-  };
+    } 
 
   // Function For Memory Recall
   const handleMemoryRecall = () => {
-    setInputValue(memory.toString());
+    setInputValue(memory);
   };
 
   return (
